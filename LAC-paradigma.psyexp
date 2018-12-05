@@ -422,7 +422,7 @@
     <Routine name="arousel">
       <RatingScaleComponent name="arousel_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['sehr entspannend', 'sehr aktivierend'], &amp;#10;scale='Arousel', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['sehr entspannend', 'sehr aktivierend'], &amp;#10;scale='Aktivierung', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
