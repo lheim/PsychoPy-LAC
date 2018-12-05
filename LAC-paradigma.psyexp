@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<PsychoPy2experiment encoding="utf-8" version="3.0.0b11">
+<PsychoPy2experiment encoding="utf-8" version="3.0.0b12">
   <Settings>
     <Param name="Completed URL" updates="None" val="completedURL" valType="str"/>
     <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
@@ -153,7 +153,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="# calculate moving average" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -269,7 +269,7 @@
     <Routine name="intensity">
       <RatingScaleComponent name="intensity_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=7, &amp;#10;labels=['gar nicht intensiv', ' sehr intensiv'], &amp;#10;scale='Intensivität', &amp;#10;markerStart='4', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['nicht warnehmbar', ' sehr intensiv'], &amp;#10;scale='Intensivität', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
@@ -320,7 +320,7 @@
     <Routine name="pleasantness">
       <RatingScaleComponent name="pleasantness_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=7, &amp;#10;labels=['gar nicht angenehm', ' sehr angenehm'], &amp;#10;scale='Angenehmlichkeit', &amp;#10;markerStart='4', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['sehr unangenehm', ' sehr angenehm'], &amp;#10;scale='Angenehmlichkeit', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
@@ -371,7 +371,7 @@
     <Routine name="familarity">
       <RatingScaleComponent name="familarity_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=7, &amp;#10;labels=['gar nicht bekannt', ' sehr bekannt'], &amp;#10;scale='Bekanntheit', &amp;#10;markerStart='4', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['überhaupt nicht vertraut', ' sehr vertraut'], &amp;#10;scale='Bekanntheit', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
@@ -414,7 +414,7 @@
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="text" updates="constant" val="Wie bekannt ist Ihnen dieser Geruch?" valType="str"/>
+        <Param name="text" updates="constant" val="Wie vertraut ist Ihnen dieser Geruch?" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -422,7 +422,7 @@
     <Routine name="arousel">
       <RatingScaleComponent name="arousel_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=7, &amp;#10;labels=['gar nicht', ' sehr stark'], &amp;#10;scale='Arousel', &amp;#10;markerStart='4', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['sehr entspannend', 'sehr aktivierend'], &amp;#10;scale='Arousel', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
@@ -465,7 +465,7 @@
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="text" updates="constant" val="Arousel Rating" valType="str"/>
+        <Param name="text" updates="constant" val="Wie entspannend bzw. aktivierend ist dieser Duftstoff?" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -646,7 +646,7 @@
       </TextComponent>
       <RatingScaleComponent name="example_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=7, &amp;#10;labels=['gar nicht', ' sehr stark'], &amp;#10;scale='Eigenschaft', &amp;#10;markerStart='4', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['gar nicht', ' sehr stark'], &amp;#10;scale='Eigenschaft', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
