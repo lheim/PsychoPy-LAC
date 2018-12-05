@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.0.0b11),
-    on Wed Dec  5 11:35:56 2018
+    on Wed Dec  5 11:29:44 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -42,7 +42,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='/Users/nope/ownCloud/work/uka/code/psychoPy/psychopy-LAC/LAC-paradigma_lastrun.py',
+    originPath='/Users/nope/ownCloud/work/uka/code/psychoPy/psychopy-LAC/LAC-paradigma.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -302,10 +302,9 @@ rating_name_of_odor = visual.RatingScale(win=win, name='rating_name_of_odor',
 marker='triangle', 
 size=1.0, 
 pos=[0.0, -0.4], 
-low=1, high=2, 
-labels=['Ja', 'Nein'],
-scale='Ja oder Nein?',  
-markerStart='2', 
+low=0, high=1, 
+labels=['nein', 'ja'],  
+markerStart='1', 
 acceptKeys='space')
 
 # Initialize components for Routine "end"
@@ -1351,7 +1350,7 @@ for thisTrial in trials:
     trials.addData('trial_duration', trial_time)
     logging.log(level=logging.EXP, msg= 'trial_duration: %.2f' %trial_time)
     
-    print(f"This trial {trials.thisRepN}.{trials.thisTrialN} took {trial_time} seconds.")
+    print(f"This trial took {trial_time} seconds.")
     
     key_interstimulus = event.BuilderKeyResponse()
     # keep track of which components have finished

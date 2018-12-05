@@ -496,7 +496,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="end_time = expClock.getTime()&amp;#10;&amp;#10;trial_time = end_time - start_time&amp;#10;trials.addData('trial_duration', trial_time)&amp;#10;logging.log(level=logging.EXP, msg= 'trial_duration: %.2f' %trial_time)&amp;#10;&amp;#10;print(f&quot;This trial took {trial_time} seconds.&quot;)&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="end_time = expClock.getTime()&amp;#10;&amp;#10;trial_time = end_time - start_time&amp;#10;trials.addData('trial_duration', trial_time)&amp;#10;logging.log(level=logging.EXP, msg= 'trial_duration: %.2f' %trial_time)&amp;#10;&amp;#10;print(f&quot;This trial {trials.thisRepN}.{trials.thisTrialN} took {trial_time} seconds.&quot;)&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="interval = 60&amp;#10;&amp;#10;end_time = expClock.getTime()&amp;#10;trial_time = end_time - start_time&amp;#10;&amp;#10;remaining_time = interval - trial_time&amp;#10;remaining_time = '%.1f' %remaining_time&amp;#10;&amp;#10;if trial_time &gt; interval:&amp;#10;    print(&quot;Continuing&quot;)&amp;#10;    continueRoutine = False" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -791,7 +791,7 @@
       </TextComponent>
       <RatingScaleComponent name="rating_name_of_odor">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=0, high=1, &amp;#10;labels=['nein', 'ja'],  &amp;#10;markerStart='1', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=2, &amp;#10;labels=['Ja', 'Nein'],&amp;#10;scale='Ja oder Nein?',  &amp;#10;markerStart='2', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
