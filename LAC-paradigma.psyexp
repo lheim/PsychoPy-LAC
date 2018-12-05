@@ -82,7 +82,7 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="stopVal" updates="constant" val="300" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
@@ -103,11 +103,25 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="365" valType="code"/>
+        <Param name="stopVal" updates="constant" val="300" valType="code"/>
         <Param name="text" updates="constant" val="+" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
+      <CodeComponent name="code_baseline">
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="trials.addData('baseline_unixtime', '%.3f' %time.time())&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_unixtime: ' + '%.3f' %time.time())&amp;#10;&amp;#10;trials.addData('baseline_time', datetime.now().strftime(&quot;%H:%M:%S.%f&quot;))&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_time: ' + datetime.now().strftime(&quot;%H:%M:%S.%f&quot;))&amp;#10;&amp;#10;start_time = expClock.getTime()&amp;#10;trials.addData('baseline_clock', start_time)&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_clock: %.2f' %start_time)&amp;#10;&amp;#10;if olf:&amp;#10;    olf.write(b&quot;\nF1\r&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code_baseline" valType="code"/>
+      </CodeComponent>
     </Routine>
     <Routine name="beginning">
       <TextComponent name="beginning_text">
@@ -147,6 +161,20 @@
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
+      <CodeComponent name="code_baseline_off">
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if olf:&amp;#10;    olf.write(b&quot;\nF1\r&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code_baseline_off" valType="code"/>
+      </CodeComponent>
     </Routine>
     <Routine name="respiration_trigger">
       <CodeComponent name="code_2">
@@ -269,7 +297,7 @@
     <Routine name="intensity">
       <RatingScaleComponent name="intensity_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['nicht warnehmbar', ' sehr intensiv'], &amp;#10;scale='Intensivität', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['nicht wahrnehmbar', ' sehr intensiv'], &amp;#10;scale='Intensivität', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
@@ -320,7 +348,7 @@
     <Routine name="pleasantness">
       <RatingScaleComponent name="pleasantness_rating">
         <Param name="categoryChoices" updates="constant" val="" valType="str"/>
-        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['sehr unangenehm', ' sehr angenehm'], &amp;#10;scale='Angenehmlichkeit', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
+        <Param name="customize_everything" updates="constant" val="win=win, &amp;#10;marker='triangle', &amp;#10;size=1.0, &amp;#10;pos=[0.0, -0.4], &amp;#10;low=1, high=9, &amp;#10;labels=['sehr unangenehm', ' sehr angenehm'], &amp;#10;scale='Annehmlichkeit', &amp;#10;markerStart='5', &amp;#10;acceptKeys='space'" valType="str"/>
         <Param name="disappear" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
@@ -488,7 +516,7 @@
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="text" updates="constant" val="Waiting for the next odor ..." valType="str"/>
+        <Param name="text" updates="constant" val="Warte auf nächsten Geruch ..." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -730,7 +758,7 @@
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="text" updates="constant" val="Wir starten nun mit der Messung Ihrer Physiologischen Daten im Ruhezustand.&amp;#10;&amp;#10;Bitte betrachten Sie während der Aufzeichnung das Kreuz, welches auf dem Bildschirm erscheint und versuchen Sie sich dabei so wenig wie möglich zu bewegen und nicht zu reden.&amp;#10;&amp;#10;Bitte nehmen Sie nun die Schläuche wieder in die Nase und achten sie darauf, nur durch die Nase zu atmen.&amp;#10;&amp;#10;&amp;#10;Weiter mit der 'Leertaste'." valType="str"/>
+        <Param name="text" updates="constant" val="Wir starten nun mit der Messung Ihrer physiologischen Daten im Ruhezustand.&amp;#10;&amp;#10;Bitte betrachten Sie während der Aufzeichnung das Kreuz, welches auf dem Bildschirm erscheint und versuchen Sie sich dabei so wenig wie möglich zu bewegen und nicht zu reden.&amp;#10;&amp;#10;Bitte nehmen Sie nun die Schläuche wieder in die Nase und achten sie darauf, nur durch die Nase zu atmen.&amp;#10;&amp;#10;&amp;#10;Weiter mit der 'Leertaste'." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
