@@ -883,6 +883,7 @@
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <Routine name="respiration_trigger"/>
+    <Routine name="respiration_trigger"/>
     <Routine name="stimuli"/>
     <Routine name="stimuli_code"/>
     <Routine name="intensity"/>
