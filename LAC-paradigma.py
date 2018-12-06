@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v3.0.0b11),
-    on Wed Dec  5 11:29:44 2018
+This experiment was created using PsychoPy3 Experiment Builder (v3.0.0b12),
+    on Thu Dec  6 18:41:48 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -26,7 +26,7 @@ _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '3.0.0b11'
+psychopyVersion = '3.0.0b12'
 expName = 'LAC-paradigma'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
@@ -89,7 +89,7 @@ instructions_text = visual.TextStim(win=win, name='instructions_text',
 # Initialize components for Routine "baseline_instruction"
 baseline_instructionClock = core.Clock()
 baseline_instruc_text = visual.TextStim(win=win, name='baseline_instruc_text',
-    text="Wir starten nun mit der Messung Ihrer Physiologischen Daten im Ruhezustand.\n\nBitte betrachten Sie während der Aufzeichnung das Kreuz, welches auf dem Bildschirm erscheint und versuchen Sie sich dabei so wenig wie möglich zu bewegen und nicht zu reden.\n\nBitte nehmen Sie nun die Schläuche wieder in die Nase und achten sie darauf, nur durch die Nase zu atmen.\n\n\nWeiter mit der 'Leertaste'.",
+    text="Wir starten nun mit der Messung Ihrer physiologischen Daten im Ruhezustand.\n\nBitte betrachten Sie während der Aufzeichnung das Kreuz, welches auf dem Bildschirm erscheint und versuchen Sie sich dabei so wenig wie möglich zu bewegen und nicht zu reden.\n\nBitte nehmen Sie nun die Schläuche wieder in die Nase und achten sie darauf, nur durch die Nase zu atmen.\n\n\nWeiter mit der 'Leertaste'.",
     font='Arial',
     pos=(0, 0), height=0.08, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -106,6 +106,7 @@ cross_1 = visual.TextStim(win=win, name='cross_1',
     languageStyle='LTR',
     depth=-1.0);
 
+
 # Initialize components for Routine "beginning"
 beginningClock = core.Clock()
 beginning_text = visual.TextStim(win=win, name='beginning_text',
@@ -115,6 +116,7 @@ beginning_text = visual.TextStim(win=win, name='beginning_text',
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
+
 
 # Initialize components for Routine "example_scale"
 example_scaleClock = core.Clock()
@@ -202,7 +204,7 @@ marker='triangle',
 size=1.0, 
 pos=[0.0, -0.4], 
 low=1, high=9, 
-labels=['nicht warnehmbar', ' sehr intensiv'], 
+labels=['nicht wahrnehmbar', ' sehr intensiv'], 
 scale='Intensivität', 
 markerStart='5', 
 acceptKeys='space')
@@ -222,7 +224,7 @@ size=1.0,
 pos=[0.0, -0.4], 
 low=1, high=9, 
 labels=['sehr unangenehm', ' sehr angenehm'], 
-scale='Angenehmlichkeit', 
+scale='Annehmlichkeit', 
 markerStart='5', 
 acceptKeys='space')
 pleasantness_text = visual.TextStim(win=win, name='pleasantness_text',
@@ -274,7 +276,7 @@ arousel_text = visual.TextStim(win=win, name='arousel_text',
 # Initialize components for Routine "interstimulus"
 interstimulusClock = core.Clock()
 text_interstimulus = visual.TextStim(win=win, name='text_interstimulus',
-    text='Waiting for the next odor ...',
+    text='Warte auf nächsten Geruch ...',
     font='Arial',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -302,9 +304,10 @@ rating_name_of_odor = visual.RatingScale(win=win, name='rating_name_of_odor',
 marker='triangle', 
 size=1.0, 
 pos=[0.0, -0.4], 
-low=0, high=1, 
-labels=['nein', 'ja'],  
-markerStart='1', 
+low=1, high=2, 
+labels=['Ja', 'Nein'],
+scale='Ja oder Nein?',  
+markerStart='2', 
 acceptKeys='space')
 
 # Initialize components for Routine "end"
@@ -563,8 +566,21 @@ t = 0
 baselineClock.reset()  # clock
 frameN = -1
 continueRoutine = True
+routineTimer.add(300.000000)
 # update component parameters for each repeat
 key_baseline = event.BuilderKeyResponse()
+trials.addData('baseline_unixtime', '%.3f' %time.time())
+logging.log(level=logging.EXP, msg= 'baseline_unixtime: ' + '%.3f' %time.time())
+
+trials.addData('baseline_time', datetime.now().strftime("%H:%M:%S.%f"))
+logging.log(level=logging.EXP, msg= 'baseline_time: ' + datetime.now().strftime("%H:%M:%S.%f"))
+
+start_time = expClock.getTime()
+trials.addData('baseline_clock', start_time)
+logging.log(level=logging.EXP, msg= 'baseline_clock: %.2f' %start_time)
+
+if olf:
+    olf.write(b"\nF1\r")
 # keep track of which components have finished
 baselineComponents = [key_baseline, cross_1]
 for thisComponent in baselineComponents:
@@ -572,7 +588,7 @@ for thisComponent in baselineComponents:
         thisComponent.status = NOT_STARTED
 
 # -------Start Routine "baseline"-------
-while continueRoutine:
+while continueRoutine and routineTimer.getTime() > 0:
     # get current time
     t = baselineClock.getTime()
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
@@ -587,6 +603,9 @@ while continueRoutine:
         # keyboard checking is just starting
         win.callOnFlip(key_baseline.clock.reset)  # t=0 on next screen flip
         event.clearEvents(eventType='keyboard')
+    frameRemains = 0.0 + 300- win.monitorFramePeriod * 0.75  # most of one frame period left
+    if key_baseline.status == STARTED and t >= frameRemains:
+        key_baseline.status = STOPPED
     if key_baseline.status == STARTED:
         theseKeys = event.getKeys(keyList=['y', 'n'])
         
@@ -605,9 +624,10 @@ while continueRoutine:
         cross_1.tStart = t
         cross_1.frameNStart = frameN  # exact frame index
         cross_1.setAutoDraw(True)
-    frameRemains = 0 + 365- win.monitorFramePeriod * 0.75  # most of one frame period left
+    frameRemains = 0 + 300- win.monitorFramePeriod * 0.75  # most of one frame period left
     if cross_1.status == STARTED and t >= frameRemains:
         cross_1.setAutoDraw(False)
+    
     
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -637,8 +657,7 @@ thisExp.addData('key_baseline.keys',key_baseline.keys)
 if key_baseline.keys != None:  # we had a response
     thisExp.addData('key_baseline.rt', key_baseline.rt)
 thisExp.nextEntry()
-# the Routine "baseline" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
+
 
 # ------Prepare to start Routine "beginning"-------
 t = 0
@@ -647,6 +666,8 @@ frameN = -1
 continueRoutine = True
 # update component parameters for each repeat
 key_beginning = event.BuilderKeyResponse()
+if olf:
+    olf.write(b"\nF1\r")
 # keep track of which components have finished
 beginningComponents = [beginning_text, key_beginning]
 for thisComponent in beginningComponents:
@@ -688,6 +709,7 @@ while continueRoutine:
             # a response ends the routine
             continueRoutine = False
     
+    
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
@@ -716,6 +738,7 @@ thisExp.addData('key_beginning.keys',key_beginning.keys)
 if key_beginning.keys != None:  # we had a response
     thisExp.addData('key_beginning.rt', key_beginning.rt)
 thisExp.nextEntry()
+
 # the Routine "beginning" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -887,8 +910,9 @@ for thisTrial in trials:
     # update component parameters for each repeat
     # calculate moving average
     key_respiration = event.BuilderKeyResponse()
+    key_resp_overwrite = event.BuilderKeyResponse()
     # keep track of which components have finished
-    respiration_triggerComponents = [cross_2, key_respiration, respiration_text]
+    respiration_triggerComponents = [cross_2, key_respiration, respiration_text, key_resp_overwrite]
     for thisComponent in respiration_triggerComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -918,7 +942,7 @@ for thisTrial in trials:
             win.callOnFlip(key_respiration.clock.reset)  # t=0 on next screen flip
             event.clearEvents(eventType='keyboard')
         if key_respiration.status == STARTED:
-            theseKeys = event.getKeys(keyList=['i', 'n'])
+            theseKeys = event.getKeys(keyList=['i'])
             
             # check for quit:
             if "escape" in theseKeys:
@@ -935,6 +959,27 @@ for thisTrial in trials:
             respiration_text.tStart = t
             respiration_text.frameNStart = frameN  # exact frame index
             respiration_text.setAutoDraw(True)
+        
+        # *key_resp_overwrite* updates
+        if t >= 0.0 and key_resp_overwrite.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            key_resp_overwrite.tStart = t
+            key_resp_overwrite.frameNStart = frameN  # exact frame index
+            key_resp_overwrite.status = STARTED
+            # keyboard checking is just starting
+            win.callOnFlip(key_resp_overwrite.clock.reset)  # t=0 on next screen flip
+            event.clearEvents(eventType='keyboard')
+        if key_resp_overwrite.status == STARTED:
+            theseKeys = event.getKeys(keyList=['n'])
+            
+            # check for quit:
+            if "escape" in theseKeys:
+                endExpNow = True
+            if len(theseKeys) > 0:  # at least one key was pressed
+                key_resp_overwrite.keys = theseKeys[-1]  # just the last key pressed
+                key_resp_overwrite.rt = key_resp_overwrite.clock.getTime()
+                # a response ends the routine
+                continueRoutine = False
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -964,6 +1009,12 @@ for thisTrial in trials:
     trials.addData('key_respiration.keys',key_respiration.keys)
     if key_respiration.keys != None:  # we had a response
         trials.addData('key_respiration.rt', key_respiration.rt)
+    # check responses
+    if key_resp_overwrite.keys in ['', [], None]:  # No response was made
+        key_resp_overwrite.keys=None
+    trials.addData('key_resp_overwrite.keys',key_resp_overwrite.keys)
+    if key_resp_overwrite.keys != None:  # we had a response
+        trials.addData('key_resp_overwrite.rt', key_resp_overwrite.rt)
     # the Routine "respiration_trigger" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -1350,7 +1401,7 @@ for thisTrial in trials:
     trials.addData('trial_duration', trial_time)
     logging.log(level=logging.EXP, msg= 'trial_duration: %.2f' %trial_time)
     
-    print(f"This trial took {trial_time} seconds.")
+    print(f"This trial {trials.thisRepN}.{trials.thisTrialN} took {trial_time} seconds.")
     
     key_interstimulus = event.BuilderKeyResponse()
     # keep track of which components have finished
@@ -1589,6 +1640,8 @@ if key_end.keys != None:  # we had a response
 thisExp.nextEntry()
 # the Routine "end" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
+
 
 if olf:
     olf.close()
