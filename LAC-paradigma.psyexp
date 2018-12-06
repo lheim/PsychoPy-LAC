@@ -112,7 +112,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="logging.log(level=logging.EXP, msg= 'baseline_unixtime: ' + '%.3f' %time.time())&amp;#10;&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_time: ' + datetime.now().strftime(&quot;%H:%M:%S.%f&quot;))&amp;#10;&amp;#10;start_time = expClock.getTime()&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_clock: %.2f' %start_time)&amp;#10;&amp;#10;if olf:&amp;#10;    olf.write(b&quot;\nF1\r&quot;)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="logging.log(level=logging.EXP, msg= 'baseline_unixtime: ' + '%.3f' %time.time())&amp;#10;baseline_trial.addData('stimuli_unixtime', '%.3f' %time.time())&amp;#10;&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_time: ' + datetime.now().strftime(&quot;%H:%M:%S.%f&quot;))&amp;#10;baseline_trial.addData('baseline_time', datetime.now().strftime(&quot;%H:%M:%S.%f&quot;))&amp;#10;&amp;#10;start_time = expClock.getTime()&amp;#10;logging.log(level=logging.EXP, msg= 'baseline_clock: %.2f' %start_time)&amp;#10;baseline_trial.addData('baseline_clock', '%.2f' %start_time)&amp;#10;&amp;#10;&amp;#10;&amp;#10;if olf:&amp;#10;    olf.write(b&quot;\nF1\r&quot;)" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -867,7 +867,19 @@
     <Routine name="welcome"/>
     <Routine name="instructions"/>
     <Routine name="baseline_instruction"/>
+    <LoopInitiator loopType="TrialHandler" name="baseline_trial">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="name" updates="None" val="baseline_trial" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
     <Routine name="baseline"/>
+    <LoopTerminator name="baseline_trial"/>
     <Routine name="beginning"/>
     <Routine name="example_scale"/>
     <Routine name="starting_trial"/>
